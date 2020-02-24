@@ -58,9 +58,9 @@ public class Init {
 
     public static void init6(){
 //        JDK 9 List.of 生成的数据不可修改
-        List<String> list = List.of("a", "b", "c");
+//        List<String> list = List.of("a", "b", "c");
 //        list.add("d");
-        System.out.println(list);
+//        System.out.println(list);
     }
 
     public static void main(String[] args) {
