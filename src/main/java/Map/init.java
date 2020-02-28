@@ -1,7 +1,11 @@
 package Map;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static java.util.Arrays.asList;
 
 /**
  * description
@@ -31,7 +35,7 @@ public class init {
     }
 
     public static void init3() {
-        // =, 浅拷贝
+        // =, 引用-浅拷贝
         System.out.println("init3");
         Map map = new HashMap();
         map.put("name", "June");
@@ -44,26 +48,39 @@ public class init {
     }
 
     public static void init4() {
-        // Map.putAll, 浅拷贝?
+        // Map.putAll, 浅拷贝
+        List<String> list = new ArrayList<>();
+        list.add("hello");
+
         System.out.println("init4");
         Map map = new HashMap();
         map.put("name", "June");
+        map.put("list", list);
+
         Map map2 = new HashMap();
         map2.putAll(map);
         map2.put("age", 12);
+        list.add("world");
 
         System.out.println(map);
         System.out.println(map2);
     }
 
     public static void init5() {
-        // Map.putAll, 浅拷贝?
+        // HashMap.putAll, 浅拷贝
+        List<String> list = new ArrayList<>();
+        list.add("hello");
+
         System.out.println("init5");
         HashMap map = new HashMap();
         map.put("name", "June");
+        map.put("list", list);
+
         HashMap map2 = new HashMap();
+        map2.put("sex", "girl");
         map2.putAll(map);
         map2.put("age", 12);
+        list.add("world");
 
         System.out.println(map);
         System.out.println(map2);
