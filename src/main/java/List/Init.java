@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.apache.commons.collections.ListUtils;
 
 import static java.util.Arrays.asList;
 
@@ -63,6 +64,18 @@ public class Init {
 //        System.out.println(list);
     }
 
+    public static void init7(){
+        List l1 = asList("hello", "hehe");
+        List l2 = asList("hello", "hehe2");
+        List l3 = ListUtils.intersection(l1, l2);
+
+
+        System.out.println(l1);
+        System.out.println(l2);
+        System.out.println(l3);
+
+    }
+
     public static void main(String[] args) {
         init1();
         init2();
@@ -70,5 +83,6 @@ public class Init {
         init4();
         init5();
         init6();
+        init7();
     }
 }
