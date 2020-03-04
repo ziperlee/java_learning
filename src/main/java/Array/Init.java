@@ -25,8 +25,10 @@ public class Init {
     public static void init2() {
         Random rand = new Random(47);
         int[] a = new int[rand.nextInt(20)];
+        int[] b = new int[10];
 //        System.out.println(a);
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(a) + a.length);
+        System.out.println(Arrays.toString(b));
 //        for (int v : a) {
 //            System.out.println(v);
 //        }
