@@ -1,4 +1,4 @@
-package Array;
+package Datastructure.Array;
 
 import org.apache.commons.beanutils.ConvertUtils;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Transformation {
     public static void trans1() {
-//        String[] -> List<String>
+//        String[] -> Datastructure.List<String>
         String key = "1,2,3";
         List<String> tmp = Arrays.asList(key.split(","));
         System.out.println(tmp);
@@ -22,7 +22,7 @@ public class Transformation {
 
     public static void trans2() {
         String key = "1,2,3";
-        //        String[] -> List<Interger>
+        //        String[] -> Datastructure.List<Interger>
         List<Integer> tmp2 = Arrays.asList((Integer[]) ConvertUtils.convert(key.split(","), Integer.class));
         System.out.println(tmp2);
     }

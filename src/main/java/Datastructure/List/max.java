@@ -1,4 +1,4 @@
-package List;
+package Datastructure.List;
 
 import java.util.Collections;
 import java.util.List;

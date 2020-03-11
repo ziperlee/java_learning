@@ -1,4 +1,4 @@
-package List;
+package Datastructure.List;
 
 import org.apache.commons.collections.ListUtils;
 

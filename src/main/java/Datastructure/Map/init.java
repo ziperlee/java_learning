@@ -1,11 +1,9 @@
-package Map;
+package Datastructure.Map;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.util.Arrays.asList;
 
 /**
  * description
@@ -48,7 +46,7 @@ public class init {
     }
 
     public static void init4() {
-        // Map.putAll, 浅拷贝
+        // Datastructure.Map.putAll, 浅拷贝
         List<String> list = new ArrayList<>();
         list.add("hello");
 

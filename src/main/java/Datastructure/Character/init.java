@@ -1,4 +1,4 @@
-package Character;
+package Datastructure.Character;
 
 /**
  * description

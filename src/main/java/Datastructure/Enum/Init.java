@@ -1,4 +1,4 @@
-package Enum;
+package Datastructure.Enum;
 
 /**
  * description

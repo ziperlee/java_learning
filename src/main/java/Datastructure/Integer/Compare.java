@@ -1,4 +1,4 @@
-package Integer;
+package Datastructure.Integer;
 
 /**
  * description
@@ -18,7 +18,7 @@ public class Compare {
     public static void compare2() {
         /* == 比较的是对象的引用
          如果你把 47 改成 128，那么打印的结果就是这样，
-         因为 Integer 内部维护着一个 IntegerCache 的缓存，
+         因为 Datastructure.Integer 内部维护着一个 IntegerCache 的缓存，
          默认缓存范围是 [-128, 127]，
          所以 [-128, 127] 之间的值用 == 和 != 比较也能能到正确的结果，
          但是不推荐用关系运算符比较

@@ -1,4 +1,4 @@
-package Integer;
+package Datastructure.Integer;
 
 /**
  * description
