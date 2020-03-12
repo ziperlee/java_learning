@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.IntStream.range;
@@ -18,7 +19,7 @@ import static java.util.stream.IntStream.range;
 
 public class Init {
     /**
-     * Stream.of
+     * 1、Stream.of
      */
     public static void init1() {
         Stream.of(1, 2, 3).forEach(System.out::println);
@@ -27,7 +28,7 @@ public class Init {
     }
 
     /**
-     * 集合转换为流
+     * 2、Collections集合转换为流
      */
     public static void init2() {
         Set<String> w = new HashSet<>(Arrays.asList("It's a wonderful day for pie!".split(" ")));
@@ -56,7 +57,7 @@ public class Init {
     }
 
     /**
-     * Random
+     * 3、Random
      */
     public static void init3() {
         Random rand = new Random(47);
@@ -78,7 +79,7 @@ public class Init {
     }
 
     /**
-     * Stream.generate
+     * 4、Stream.generate
      * 必须覆盖get
      */
     public static void init5() {
@@ -104,7 +105,7 @@ public class Init {
     }
 
     /**
-     * Stream.iterate
+     * 5、Stream.iterate
      */
     public static void init6() {
         class Fibonacci {
@@ -126,7 +127,7 @@ public class Init {
     }
 
     /**
-     * Stream.builder
+     * 6、Stream.builder
      * 流的建造者模式
      */
     public static void init7() {
@@ -159,12 +160,22 @@ public class Init {
     }
 
     /**
-     * Arrays.stream
+     * 7、Arrays.stream
      */
     public static void init8() {
         // 选择一个子域:
         Arrays.stream(new int[] { 1, 3, 5, 7, 15, 28, 37 }, 3, 6)
                 .forEach(n -> System.out.format("%d ", n));
+        System.out.println();
+    }
+
+    /**
+     * 8.IntStream, LongStream, DoubleStream
+     */
+    public static void init9(){
+        IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
+        IntStream.range(1, 3).forEach(System.out::println);
+        IntStream.rangeClosed(1, 3).forEach(System.out::println);
         System.out.println();
     }
 
