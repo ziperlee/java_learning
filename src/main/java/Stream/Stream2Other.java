@@ -27,10 +27,12 @@ public class Stream2Other {
         Stream<String> stream2 = Stream.of("a", "b", "c");
         Stream<String> stream3 = Stream.of("a", "b", "c");
         Stream<String> stream4 = Stream.of("a", "b", "c");
+        Stream<String> stream5 = Stream.of("a", "b", "c");
         List<String> list1 = stream1.collect(Collectors.toList());
         List<String> list2 = stream2.collect(Collectors.toCollection(ArrayList::new));
         Set set1 = stream3.collect(Collectors.toSet());
         Stack stack1 = stream4.collect(Collectors.toCollection(Stack::new));
+        String str = stream5.collect(Collectors.joining()).toString();
     }
 
     public static void toOther3() {

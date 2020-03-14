@@ -106,6 +106,8 @@ public class Init {
 
     /**
      * 5、Stream.iterate
+     * iterate 跟 reduce 操作很像，接受一个种子值，和一个 UnaryOperator（例如 f）。
+     * 然后种子值成为 Stream 的第一个元素，f(seed) 为第二个，f(f(seed)) 第三个，以此类推。
      */
     public static void init6() {
         class Fibonacci {
