@@ -1,14 +1,13 @@
 package Datastructure.List;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.apache.commons.collections.ListUtils;
+
+import Generics.Suppliers;
 
 import static java.util.Arrays.asList;
 
@@ -94,8 +93,13 @@ public class Init {
     public static void init10() {
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 //        左开右闭，index从0开始
-        List<Integer> subList = list.subList(1,3);
+        List<Integer> subList = list.subList(1, 3);
         System.out.println(subList);
+    }
+
+    public static void init11() {
+        List<Random> sphereList = Suppliers.create(
+                ArrayList::new, Random::new, 5);
     }
 
     public static void main(String[] args) {

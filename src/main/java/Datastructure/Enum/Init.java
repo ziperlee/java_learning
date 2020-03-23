@@ -8,7 +8,12 @@ package Datastructure.Enum;
  */
 
 enum Spiciness {
-    NOT, MILD, MEDIUM, HOT, FLAMING
+    NOT("可以添加描述"), MILD(""), MEDIUM(""), HOT(""), FLAMING("");
+    private String description;
+    private Spiciness(String description){
+        this.description = description;
+    }
+
 }
 
 
@@ -17,14 +22,24 @@ public class Init {
         Spiciness howHot = Spiciness.MEDIUM;
         System.out.println(howHot);
 
-        for (Spiciness s: Spiciness.values()) {
+        for (Spiciness s : Spiciness.values()) {
             System.out.println(s + ", ordinal " + s.ordinal());
         }
 
     }
 
+    public static void init2() {
+        for(String s :
+                "NOT MILD MEDIUM HOT FLAMING".split(" ")) {
+            Spiciness spic =
+                    Enum.valueOf(Spiciness.class, s);
+            System.out.println(spic);
+        }
+    }
+
     public static void main(String[] args) {
         init1();
+        init2();
     }
 
 }
