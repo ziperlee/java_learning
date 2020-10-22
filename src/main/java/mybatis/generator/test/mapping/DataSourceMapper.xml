@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.dao.DataSourceMapper" >
+  <resultMap id="BaseResultMap" type="test.model.DataSource" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="data_name" property="dataName" jdbcType="VARCHAR" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="data_source" property="dataSource" jdbcType="VARCHAR" />
+    <result column="data_size" property="dataSize" jdbcType="BIGINT" />
+    <result column="rows_size" property="rowsSize" jdbcType="INTEGER" />
+    <result column="cols_size" property="colsSize" jdbcType="INTEGER" />
+    <result column="operator_instance_id" property="operatorInstanceId" jdbcType="INTEGER" />
+    <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="missing_value" property="missingValue" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="BIT" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="data_type" property="dataType" jdbcType="VARCHAR" />
+    <result column="primary_key" property="primaryKey" jdbcType="VARCHAR" />
+    <result column="label_key" property="labelKey" jdbcType="VARCHAR" />
+    <result column="isdetele" property="isdetele" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="test.model.DataSource" extends="BaseResultMap" >
+    <result column="ext_fields" property="extFields" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, data_name, table_name, data_source, data_size, rows_size, cols_size, operator_instance_id, 
+    org_code, status, missing_value, creator, modifier, isdelete, gmt_create, gmt_modify, 
+    group_id, data_type, primary_key, label_key, isdetele
+  </sql>
+  <sql id="Blob_Column_List" >
+    ext_fields
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from data_source
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_source
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="test.model.DataSource" >
+    insert into data_source (id, data_name, table_name, 
+      data_source, data_size, rows_size, 
+      cols_size, operator_instance_id, org_code, 
+      status, missing_value, creator, 
+      modifier, isdelete, gmt_create, 
+      gmt_modify, group_id, data_type, 
+      primary_key, label_key, isdetele, 
+      ext_fields)
+    values (#{id,jdbcType=BIGINT}, #{dataName,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{dataSource,jdbcType=VARCHAR}, #{dataSize,jdbcType=BIGINT}, #{rowsSize,jdbcType=INTEGER}, 
+      #{colsSize,jdbcType=INTEGER}, #{operatorInstanceId,jdbcType=INTEGER}, #{orgCode,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{missingValue,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{modifier,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{groupId,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR}, 
+      #{primaryKey,jdbcType=VARCHAR}, #{labelKey,jdbcType=VARCHAR}, #{isdetele,jdbcType=BIT}, 
+      #{extFields,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="test.model.DataSource" >
+    insert into data_source
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dataName != null" >
+        data_name,
+      </if>
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="dataSource != null" >
+        data_source,
+      </if>
+      <if test="dataSize != null" >
+        data_size,
+      </if>
+      <if test="rowsSize != null" >
+        rows_size,
+      </if>
+      <if test="colsSize != null" >
+        cols_size,
+      </if>
+      <if test="operatorInstanceId != null" >
+        operator_instance_id,
+      </if>
+      <if test="orgCode != null" >
+        org_code,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="missingValue != null" >
+        missing_value,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="primaryKey != null" >
+        primary_key,
+      </if>
+      <if test="labelKey != null" >
+        label_key,
+      </if>
+      <if test="isdetele != null" >
+        isdetele,
+      </if>
+      <if test="extFields != null" >
+        ext_fields,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSource != null" >
+        #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSize != null" >
+        #{dataSize,jdbcType=BIGINT},
+      </if>
+      <if test="rowsSize != null" >
+        #{rowsSize,jdbcType=INTEGER},
+      </if>
+      <if test="colsSize != null" >
+        #{colsSize,jdbcType=INTEGER},
+      </if>
+      <if test="operatorInstanceId != null" >
+        #{operatorInstanceId,jdbcType=INTEGER},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="missingValue != null" >
+        #{missingValue,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="primaryKey != null" >
+        #{primaryKey,jdbcType=VARCHAR},
+      </if>
+      <if test="labelKey != null" >
+        #{labelKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isdetele != null" >
+        #{isdetele,jdbcType=BIT},
+      </if>
+      <if test="extFields != null" >
+        #{extFields,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="test.model.DataSource" >
+    update data_source
+    <set >
+      <if test="dataName != null" >
+        data_name = #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSource != null" >
+        data_source = #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSize != null" >
+        data_size = #{dataSize,jdbcType=BIGINT},
+      </if>
+      <if test="rowsSize != null" >
+        rows_size = #{rowsSize,jdbcType=INTEGER},
+      </if>
+      <if test="colsSize != null" >
+        cols_size = #{colsSize,jdbcType=INTEGER},
+      </if>
+      <if test="operatorInstanceId != null" >
+        operator_instance_id = #{operatorInstanceId,jdbcType=INTEGER},
+      </if>
+      <if test="orgCode != null" >
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="missingValue != null" >
+        missing_value = #{missingValue,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="primaryKey != null" >
+        primary_key = #{primaryKey,jdbcType=VARCHAR},
+      </if>
+      <if test="labelKey != null" >
+        label_key = #{labelKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isdetele != null" >
+        isdetele = #{isdetele,jdbcType=BIT},
+      </if>
+      <if test="extFields != null" >
+        ext_fields = #{extFields,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="test.model.DataSource" >
+    update data_source
+    set data_name = #{dataName,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      data_source = #{dataSource,jdbcType=VARCHAR},
+      data_size = #{dataSize,jdbcType=BIGINT},
+      rows_size = #{rowsSize,jdbcType=INTEGER},
+      cols_size = #{colsSize,jdbcType=INTEGER},
+      operator_instance_id = #{operatorInstanceId,jdbcType=INTEGER},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      missing_value = #{missingValue,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=BIT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=VARCHAR},
+      primary_key = #{primaryKey,jdbcType=VARCHAR},
+      label_key = #{labelKey,jdbcType=VARCHAR},
+      isdetele = #{isdetele,jdbcType=BIT},
+      ext_fields = #{extFields,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="test.model.DataSource" >
+    update data_source
+    set data_name = #{dataName,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      data_source = #{dataSource,jdbcType=VARCHAR},
+      data_size = #{dataSize,jdbcType=BIGINT},
+      rows_size = #{rowsSize,jdbcType=INTEGER},
+      cols_size = #{colsSize,jdbcType=INTEGER},
+      operator_instance_id = #{operatorInstanceId,jdbcType=INTEGER},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      missing_value = #{missingValue,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=BIT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=VARCHAR},
+      primary_key = #{primaryKey,jdbcType=VARCHAR},
+      label_key = #{labelKey,jdbcType=VARCHAR},
+      isdetele = #{isdetele,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

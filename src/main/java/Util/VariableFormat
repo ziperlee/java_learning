@@ -1,0 +1,31 @@
+    # get filter
+    import requests
+
+    filter_url = "http://10.10.21.32:8088/api/align/filter"
+    params = {"table_id": "0f9be384cdde453fba821a6363c9f94d"}
+    res = requests.get(filter_url, params)
+
+    import io
+    import numpy as np
+
+    filterio = io.BytesIO(res.content)
+    npz = np.load(filterio)
+    filter = npz[npz.files[0]]
+
+    # coarse align
+    from algo.crypto.filter.id_filter import IDFilter
+
+    id_filter = IDFilter(log2_len=31, filter=filter)
+    # coarse_align = CoarseAlign(fed_conf, jobid)
+    # coarse_align.align(filter_n, job_id=jobid)
+
+    # post filter
+    np.savez_compressed("/tmp/data.npz", filter)
+    param2 = {"table_id": "0f9be384cdde453fba821a6363c9f94d"}
+    headers = {"content-type": "application/octet-stream"}
+    res2 = requests.post(
+        filter_url, open("/tmp/data.npz", "rb").read(), params=param2, headers=headers
+    )
+
+    # get hashlist
+    hashlist_url = "http://10.10.21.32:8088/api/align/hashlist"
